@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ENCONTRE O RU</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script src="css/jquery.js" type="text/javascript"></script>
+	<script src="css/ui/jquery-ui.js" type="text/javascript"></script>
+  
+</head>
+<body>
+<div id="All">
+	<div id="Top">
+   		LE RU, <small>em busca do caminho perdido</small>
+   		<span id="Local">Você está no(a): <b id="Localizacao">Inicio do Jogo</b></span>
+	</div>
+<div id="Started" style="display:none;">
+	<div id="Nav">
+   		<span class="NomeChar">Inventório</span>
+   		<div id="SeparadorItem"></div>
+   		<div id="Item"><img src="css/images/declaracao.png" alt=""></div>
+   		<div id="Item"><img src="css/images/galho.png" alt=""></div>
+   		<div id="Item"></div>
+   		<div id="Item"></div>
+   		<div id="Item"></div>
+   		<div id="Item"></div>
+   		<br clear='both'><br clear='both'>
+   		<div id="Item"><img src="css/images/moedas.png" alt=""></div>
+   		<div id="Item"></div>
+   		<div id="Item"></div>
+   		<span class="NomeChar">Luiz</span>   		
+	</div>	
+	<div id="Conversa">
+	
+	<div id="Cont">
+     <div id="NPC">
+     <img src="css/images/n0.png" id="NPCAvatar">
+     <span class="NomeNPC">Guia</span>
+     <p id='TextoNPC'>Olá, calouro. Você tem pouco tempo. Tome as decisões corretas!</p>
+     </div>
+	</div>	
+	
+
+	<div id="Me">
+	
+     <div id="AnswerBox">
+        <div id="ContMe">
+          <div id="ChatMe">
+          <img src="css/images/calouro.png" alt="">
+          <span class="NomeMe"></span>
+          <p id='TextoMe'>...</p>
+          </div>
+        </div>     	
+     </div>
+	</div>	
+	</div>
+<br clear="both" />
+
+
+<div id="OptionsChat">
+<!--      <select id="acao" class='OpcaoSelect'>
+        <option value="1">Continuar</option>
+        <option value="2">Ignorar</option>
+     	<option value="3">Responder</option>
+     </select>
+ --> 
+    
+     <input type="button" id="Opt01" data-id="1" value="Continuar" class="Botoes">
+     <input type="button" id="Opt02" data-id="2" value="Avançar" class="Botoes" style="display:none"> 
+
+<!-- <div class='Botoes' id='Secao01'>
+<a data-id="1"  id="Opt01">Continuar</a>
+</div>
+<br clear="both" />
+
+<div class='Botoes' id='Secao02'>
+<a data-id="2"  id="Opt02" style="display:none">BOTAO 2</a>     
+</div> -->
+     <b>CONTROL</b>
+     Fala: <input style='width:30px;' type="text" id="FalaAtual" value="1">
+     Local: <input style='width:30px;' type="text" id="LocalAtual" value="0">
+     NPCAtual: <input style='width:30px;' type="text" id="NPCAtual" value="1">
+     NewScene: <input style='width:30px;' type="text" id="NovaAtual" value="nada"> 
+</div>	
+</div>
+<div id="Startar">
+<p>Olá, Calouro! Você tem uma dura missão: encontrar o Restaurante Universitário da UFPR.</p>
+<p>Acha fácil? Bom, que a sorte te acompanhe.</p>
+<input type="text" id="nomeCalouro" required placeholder="Digite seu nome aqui, calouro." value='Calourudo' class="NomeStart">
+<input type="submit" id="letsGo" value="Iniciar!" class="Opcao">
+</div>
+
+<script type="text/javascript">
+$("#letsGo").click(function(){  //INICIA O JOGO.
+ if ($("#nomeCalouro").val() == "") {  // SE NOME DO CALOURO NÃO FOI DIGITADO
+ 	alert("Tinha que ser calouro mesmo. DIGITE SEU NOME!");  //ALERT
+ 	$("#nomeCalouro").effect("highlight",1000); // REALÇA O INOUT DO NOME DO CALOURO
+ }
+ else {
+
+
+ 	var calouro = $("#nomeCalouro").val(); // ARMAZENA O NOME NA VAL
+ 	$(".NomeMe").html("Calouro "+calouro); // MUDA NO NOME NA BOX DO CALOURO
+	
+ 	$("#Startar").remove(); // REMOVE A DIV DE INTRO
+ 	$("#Started").show('fade',500); // INICIA O JOGO COM UM FADE
+	
+ 	$.getJSON("css/base.json", function( json ) { //LE O JSON COM TODAS AS INFORMACOES
+	
+    	$(".Botoes").click(function(){ // SE CLICOU NA OPCAO 01
+	
+    	var atual_npc = parseInt($("#NPCAtual").val()); // ARMAZENA O NPC
+    	var atual_local = parseInt($("#LocalAtual").val()); // ARMAZENA O LOCAL
+    	var atual_fala = parseInt($("#FalaAtual").val()); // ARMAZENA A FALA
+    	var atual_nova = $("#NovaAtual").val(); // ARMAZENA A VARIAVEL QUE DIZ SE VAI MUDAR DE NPC
+	
+     	if (atual_nova == 'nada') { //SE NAO VAI MUDAR DE NPC
+			$("#Conversa").hide('fade',250); // OCULTA A BOX
+			$("#Conversa").show('fade',250); // EXIBE A BOX  	
+        	var acao = json.FALAS[atual_fala].acao; // ARMAZENA A ACAO DA FALA                
+	
+       		$(".NomeNPC").html(json.NPC[atual_npc].nome); // RECUPERA O NOME DO NPC E ALTERA O NOME
+        	$("#NPCAvatar").attr("src","css/images/n"+atual_npc+".png");  // RECUPERA O ID DO NPC E COLOCA O AVATAR
+        	$("#TextoNPC").html(json.FALAS[atual_fala].fala_npc);  // RECUPERA A FALA DO NPC                
+        	$("#TextoMe").html(json.FALAS[atual_fala].fala_me); // RECUPERA A FALA DO CALOURO  
+	        
+        	if (acao == "0") { // SE NAO TEM ACAO NA FALA
+            	$("#NovaAtual").val('nada'); // MANTEM
+            	$("#FalaAtual").val(atual_fala+1); // AVANCA UMA FALA
+            	$("#Opt01").val("Continuar"); // VOLTA O NOME CONTINUAR PADRÃO
+        	}
+	
+        	else // SE TEM UMA ACAO
+        	{
+	
+        		
+
+        		$("#Opt01").val(json.ACOES[acao].botao1);  // RECUPERA O NOME DO PRIMEIRO BOTAO E JA ALTERA
+	
+         		if (json.ACOES[acao].botao2 != null) { // SE O SEGUNDO BOTAO FOR ATIVADO
+        			
+
+        			$("#Opt02").show(); // EXIBE, PQ ELE É DISPLAY:NONE POR PADRÃO
+        			$("#Opt02").val(json.ACOES[acao].botao2); // DA O NOME PRA ELE
+
+         			 var botaoqclicou = $(this).data("id"); // RECUPERA QUAL O BOTÃO ELE CLICOU
+         			 
+         			 if (botaoqclicou === 1) { 
+         			 	// alert("if");
+         			 	$("#NPCAtual").val(json.ACOES[acao].npcac1); // ATUALIZA O NPC PARA A PROXIMA CENA
+         			 	$("#LocalAtual").val(json.ACOES[acao].local1); // ATUALIZA A LOCALIZAÇÃO
+         			 	$("#FalaAtual").val(json.ACOES[acao].falas1); // ATUALIZA O COD PRA PROX. FALA
+         				// $("#Opt01").val("Continuar"); // VOLTA O NOME CONTINUAR PADRÃO		 	
+         				// $("#Opt02").hide(); // OCULTA O SEGUNDO BOTAO         			 	
+         			 }      /// AQUI TA DANDO ZICA.
+         			 else {
+         			 	// alert("else");
+         			 	$("#NPCAtual").val(json.ACOES[acao].npcac2); // ATUALIZA O NPC PARA A PROXIMA CENA
+         			 	$("#LocalAtual").val(json.ACOES[acao].local2); // ATUALIZA A LOCALIZAÇÃO
+         			 	$("#FalaAtual").val(json.ACOES[acao].falas2); // ATUALIZA O COD PRA PROX. FALA
+         				// $("#Opt01").val("Continuar"); // VOLTA O NOME CONTINUAR PADRÃO		 	
+         				// $("#Opt02").hide(); // OCULTA O SEGUNDO BOTAO
+         			 }
+
+
+        		}
+	
+        		else // SE SO VAI TER UMA OPÇÃO. EX: AVANÇAR, CONTINUAR, AGUARDAR.
+        		{
+        			$("#LocalAtual").val(json.ACOES[acao].local1); // MUDA O INPUT DO LOCAL
+        			$("#NPCAtual").val(json.ACOES[acao].npcac1); // MUDA A INPUT NPC
+        			$("#FalaAtual").val(json.ACOES[acao].falas1); // AVANCA A FALA PARA A INDICADA NO JSON
+        			$("#Localizacao").html(json.LOCAL[json.ACOES[acao].local1]);
+	
+        		}
+	        
+	
+	
+	
+	
+	
+        	}
+	
+	
+     	}
+     	else
+     	{
+      	alert("atual_nova == " + atual_nova);
+    	//   $(".NomeNPC").html(vetNPC[atual_nova]);
+    	//   $("#NPCAtual").val(atual_nova);
+    	//   $("#cena").val('1');
+    	//   $("#All").effect('pulsate'); 
+    	//   $("#newscene").val(0);      
+     	}
+	 
+    	// 	$("#Cont").hide();
+    	// 	$("#Cont").show("fade",200);
+    	// 	$("#TextoNPC").html(vetFalas[npca,sena][0]);
+    	//   $("#Me").effect('highlight',100);
+    	//   $("#TextoMe").html(vetFalas[npca,sena][1]);
+	    	
+    	//   if (vetFalas[npca,sena][2] != '') {
+    	//     var acion = vetFalas[npca,sena][2];
+    	//     var indNPC = vetAcoes[acion][4];
+    	//     var npcb = vetNPC[indNPC];
+	      
+    	//     $("#newscene").val(indNPC);
+    	//     $("#Opt01").val(vetAcoes[acion][0]);
+	        
+    	//     if (vetAcoes[acion][1] != '') { 
+    	//       $("#Opt02").show(); 
+    	//       $("#Opt02").val(vetAcoes[acion][1]); 
+    	//     }
+	       
+      	// }
+	
+	});//acao
+ 	});//import
+}
+
+
+
+
+
+});//letsgo
+</script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+{
+  "NPC": {
+    "0": {
+      "nome": "Guia",
+      "locais": [
+        "0",
+        "4",
+        "5",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16"
+      ]
+    },
+    "1": {
+      "nome": "Segurança",
+      "locais": [
+        "1"
+      ]
+    },
+    "2": {
+      "nome": "Secretário",
+      "locais": [
+        "2"
+      ]
+    },
+    "3": {
+      "nome": "Veterano",
+      "locais": [
+        "3",
+        "8"
+      ]
+    },
+    "4": {
+      "nome": "Instrutor",
+      "locais": [
+        "6"
+      ]
+    },
+    "5": {
+      "nome": "Cachorro",
+      "locais": [
+        "12"
+      ]
+    }
+  },
+  "LOCAL": {
+    "1": "Entrada do SEPT",
+    "2": "Secretaria",
+    "3": "Mesa de Ping-Pong",
+    "4": "Estacionamento de EF",
+    "5": "Quadras",
+    "6": "Academia",
+    "7": "Floresta",
+    "8": "Casinhas",
+    "9": "Empresas",
+    "10": "dINF",
+    "11": "Casa 3",
+    "12": "Biblioteca de CT",
+    "13": "Dp. de Química",
+    "14": "Correios",
+    "15": "Cantina",
+    "16": "RU"
+  },
+  "FALAS": {
+    "1": {
+      "fala_npc": "...",
+      "fala_me": "Olá?",
+      "acao": "0"
+    },
+    "2": {
+      "fala_npc": "Oi, precisa de ajuda?",
+      "fala_me": "Sim! Quero ir para o RU, como eu faço?",
+      "acao": "0"
+    },
+    "3": {
+      "fala_npc": "Eu não almoço aqui",
+      "fala_me": "Ah tá. Sabe onde é?",
+      "acao": "0"
+    },
+    "4": {
+      "fala_npc": "Não. Pergunte na secretaria",
+      "fala_me": "OK",
+      "acao": "1"
+    },
+    "5": {
+      "fala_npc": "Pois não?",
+      "fala_me": "Oi, pode me dizer onde fica o RU?",
+      "acao": "0"
+    },
+    "6": {
+      "fala_npc": "Espere um pouco",
+      "fala_me": "Okay",
+      "acao": "0"
+    },
+    "7": {
+      "fala_npc": "...",
+      "fala_me": "Olá??",
+      "acao": "0"
+    },
+    "8": {
+      "fala_npc": "...",
+      "fala_me": "Hey, pode me ajudar?",
+      "acao": "2"
+    },
+    "9": {
+      "fala_npc": "...",
+      "fala_me": "...",
+      "acao": "2"
+    },
+    "10": {
+      "fala_npc": "E ai, quer jogar ping-pong?",
+      "fala_me": "Na verdade preciso ir ao RU. Mas...",
+      "acao": "3"
+    }
+  },
+  "ACOES": {
+    "1": {
+      "botao1": "Ir",
+      "local1": "2",
+      "npcac1": "2",
+      "falas1": "5",
+      "botao2": null,
+      "local2": null,
+      "npcac2": null,
+      "falas2": null
+    },
+    "2": {
+      "botao1": "Aguardar",
+      "local1": "2",
+      "npcac1": "2",
+      "falas1": "9",
+      "botao2": "Ir embora",
+      "local2": "3",
+      "npcac2": "3",
+      "falas2": "10"
+    },
+    "3": {
+      "botao1": "Aceitar",
+      "local1": "3",
+      "npcac1": "3",
+      "falas1": "11",
+      "botao2": "Prosseguir",
+      "local2": "4",
+      "npcac2": "0",
+      "falas2": "12"
+    }
+  }
+}

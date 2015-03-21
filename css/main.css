@@ -1,0 +1,163 @@
+body {
+	/*max-width: 1000px;*/
+	font-family: 'Open Sans',sans-serif;
+	background: #DDCCA5 url("images/bg.jpg");
+}
+
+/**/
+
+span#Local{
+	float:right;
+	font-size: 10px;
+	font-family: arial;
+}
+
+div#All {
+	width:100%;
+	margin:3px;
+}	
+
+div#Top {
+	text-align: left;	
+	border-bottom:1px dashed #888;
+	margin:3px;
+	font-family: 'Badaboom BB',arial;
+	font-size: 70px;
+}
+
+div#Me {
+	text-align: left;	
+	margin:3px;
+	float:left;
+	/*clear:both;*/
+}
+
+div#Nav {
+  	float:right;
+  	border:1px solid #444;
+	margin:10px;
+	padding: 15px 0px 0 0px;
+	text-align: right;
+    background: transparent url("images/itens.png") no-repeat;
+    width:180px;
+    height:310px;
+    text-align: center;
+}
+ div#SeparadorItem {
+ 	margin:35px 0 0 0;
+ }
+
+
+div#Item {
+	width:60px;
+	height:60px;
+	float:left;
+}
+
+span.NomeChar {
+	color:#5F4C0B;
+	font-family: 'Georgia',arial;
+	font-size: 22px;
+}
+
+div#Cont {
+  	border:0px solid #444;
+	margin:8px;
+	padding: 15px 0px 0 0px;
+	text-align: right;
+    background: transparent url("images/text.png") no-repeat;
+    height:110px;
+    width:405px;
+    text-align: center;
+}	
+
+
+div#NPC {	
+	margin:8px 0 0 38px;
+	text-align: left;
+	color:#fff;
+	font-family: 'Georgia',arial;
+	font-size:13px;
+}
+
+div#NPC img {
+	float:left;
+	width:70px;
+	height:70px;
+}
+
+div#NPC p {
+	padding:0 0 0 80px;
+	width:240px;
+	word-wrap: break-word;
+	text-align: justify;
+}
+
+span.NomeNPC {
+	color:#fff;
+	text-shadow: 1px 1px 1px rgba(35, 35, 35, 0.62);
+	font-size: 20px;
+	margin-left:10px;
+}
+
+input.Botoes, .Opcao {
+	border:0px;
+	background: transparent url("images/option.png") no-repeat;
+	width:165px;
+	height:52px;
+	color:#FFF;
+}
+
+select.OpcaoSelect {
+	border:1px solid #5F4C0B;
+	width:150px;
+	height:40px;
+	color:#5F4C0B;
+}
+
+input.NomeStart {
+	border:1px solid #5F4C0B;
+	width:400px;
+	height:40px;
+	color:#5F4C0B;
+	text-align: center;
+}
+
+div#ContMe {
+  	border:0px solid #444;
+	margin:8px;
+	padding: 15px 0px 0 0px;
+	text-align: right;
+    background: transparent url("images/text_me.png") no-repeat;
+    height:110px;
+    width:405px;
+    text-align: center;
+}
+
+div#ChatMe {	
+	margin:8px 43px 0 38px;
+	text-align: left;
+	color:#fff;
+	font-family: 'Georgia',arial;
+	font-size:13px;
+}
+
+div#ChatMe img {
+	float:right;
+	width:70px;
+	height:70px;
+}
+
+div#ChatMe p {
+	padding:0 80 0 0px;
+	width:240px;
+	word-wrap: break-word;
+	text-align: justify;
+}
+
+span.NomeMe {
+	color:#fff;
+	text-shadow: 1px 1px 1px rgba(35, 35, 35, 0.62);
+	font-size: 20px;
+	margin-right:10px;
+}
